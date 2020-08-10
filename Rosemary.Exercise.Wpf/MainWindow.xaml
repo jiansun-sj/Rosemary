@@ -1,0 +1,21 @@
+﻿<Window x:Class="Rosemary.Exercise.Wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Rosemary.Exercise.Wpf"
+        xmlns:model="clr-namespace:Rosemary.Exercise.Wpf.Model"
+        xmlns:convertor="clr-namespace:Rosemary.Exercise.Wpf.Convert"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        DataContext="{Binding MainWindowVm,RelativeSource={RelativeSource Self}}"
+        >
+    <Window.Resources>
+        <convertor:NumberConvertToInt x:Key="NumberConvertToInt"/>
+        <model:TestClassModel x:Key="TestClassModel"></model:TestClassModel>
+    </Window.Resources>
+    <StackPanel>
+        <TextBox Height="30" Width="100" Text="{Binding Message,Converter={StaticResource NumberConvertToInt},ConverterParameter={StaticResource TestClassModel}}" Background="Aqua"/>
+        <Button Height="30" Width="100" Content="Test"/>
+    </StackPanel>
+</Window>
